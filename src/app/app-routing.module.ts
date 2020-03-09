@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: '',
     component: PagesComponent,
-    canActivate: [ LoginGuard ],
+    // canActivate: [ LoginGuard ],
     loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
   },
 ];

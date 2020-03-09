@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { PacienteService, PersonalService, AreaService, TurnoService } from 'src/app/services/services.index';
+import { PacienteService, PersonalService, AreaService, TurnoService, AuthenticationService } from 'src/app/services/services.index';
 import * as moment from 'moment';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { Observable } from 'rxjs';
@@ -7,6 +7,7 @@ import { PacienteInterface } from 'src/app/interfaces/paciente.interface';
 import { PersonalInterface } from 'src/app/interfaces/personal.interface';
 import { AreaInterface } from 'src/app/interfaces/area.interface';
 import { TurnoInterface } from 'src/app/interfaces/turno.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -28,10 +29,18 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private pacienteService: PacienteService,
     private personalService: PersonalService,
     private areaService: AreaService,
-    private turnoService: TurnoService
+    private turnoService: TurnoService,
+    private authService: AuthenticationService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+    this.authService.getStatus().subscribe( (user) => {
+      if (!user) {
+        this.router.navigate(['/login']);
+      }
+    }
+    );
     this.fecha = moment();
     this.pacientes = this.pacienteService.getPacientes();
     this.suscriptor.push(

@@ -1,7 +1,7 @@
 import { LOCALE_ID, Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import * as moment from 'moment';
 import { TurnosFunctions } from './turnos.functions';
-import { UsuarioService, PacienteService, PersonalService, TurnoService } from 'src/app/services/services.index';
+import { UsuarioService, PacienteService, PersonalService, TurnoService, AuthenticationService } from 'src/app/services/services.index';
 import { Subscription } from 'rxjs';
 import { PersonalInterface } from 'src/app/interfaces/personal.interface';
 import {
@@ -14,6 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddTurnoComponent } from './add-turno.component';
 import Swal from 'sweetalert2';
 import { ActivatedRoute } from '@angular/router';
+import { UserInterface } from 'src/app/interfaces/user.interface';
 declare var $: any;
 
 @Component({
@@ -43,10 +44,12 @@ export class TurnosComponent implements OnInit, OnDestroy {
   faCheckCircle = faCheckCircle;
   faAngleDoubleLeft = faAngleDoubleLeft;
   faAngleDoubleRight = faAngleDoubleRight;
+  user: UserInterface;
 
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private authService: AuthenticationService,
     private usuarioService: UsuarioService,
     private pacienteService: PacienteService,
     private personalService: PersonalService,
@@ -57,19 +60,31 @@ export class TurnosComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.idProf = this.activatedRoute.snapshot.params.idProf;
     this.fecha = moment();
     this.turnosFunction = new TurnosFunctions(
       this.usuarioService,
       this.pacienteService,
       this.personalService
-      );
-    this.cargaTurnos();
+    );
+    this.suscriptor.push(
+      this.authService.getStatus()
+      .subscribe( (user) => {
+        if (user) {
+          this.suscriptor.push(
+            this.usuarioService.getUserById(user.uid)
+            .subscribe( (usuario: UserInterface) => {
+              this.user = usuario;
+              this.cargaTurnos();
+            })
+          );
+        }
+      })
+    );
   }
 
   cargaTurnos() {
-    if (this.idProf) {
-      this.cargarTurnosProf(this.idProf);
+    if (this.user.role === 'ROLE_USER') {
+      this.cargarTurnosProf(this.user._id);
     } else {
       this.cargarTurnos();
     }
