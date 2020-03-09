@@ -103,4 +103,21 @@ export class PacienteService {
   delete(id: string) {
     return this.afs.collection('pacientes').doc(id).delete();
   }
+
+  // ======================================================
+  // Crea un paciente
+  // ======================================================
+  createPaciente(paciente: PacienteInterface) {
+    const id = this.afs.createId();
+    paciente._id = id;
+    console.log(paciente);
+    return this.afs.collection('pacientes').doc(id).set(paciente)
+    .then( (result) => {
+      return id;
+    })
+    .catch( (error) => {
+      console.log(error);
+      return null;
+    });
+  }
 }

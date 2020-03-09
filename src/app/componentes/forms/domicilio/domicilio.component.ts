@@ -35,31 +35,31 @@ export class DomicilioComponent implements OnInit {
   crearFormulario() {
     this.formaDomicilio = new FormGroup({
       calle: new FormControl({
-        value: this.domicilio.calle,
+        value: this.domicilio.calle || null,
         disabled: this.ver
       }),
       casa: new FormControl({
-        value: this.domicilio.casa,
+        value: this.domicilio.casa || null,
         disabled: this.ver
       }),
       barrio: new FormControl({
-        value: this.domicilio.barrio,
+        value: this.domicilio.barrio || null,
         disabled: this.ver
       }),
       ciudad: new FormControl({
-        value: this.domicilio.ciudad,
+        value: this.domicilio.ciudad || null,
         disabled: this.ver
       }),
       cp: new FormControl({
-        value: this.domicilio.cp,
+        value: this.domicilio.cp || null,
         disabled: this.ver
       }),
       provincia: new FormControl({
-        value: this.domicilio.provincia,
+        value: this.domicilio.provincia || null,
         disabled: this.ver
       }),
       pais: new FormControl({
-        value: this.domicilio.pais,
+        value: this.domicilio.pais || null,
         disabled: this.ver
       })
     });
@@ -69,6 +69,7 @@ export class DomicilioComponent implements OnInit {
     if (!this.idPersona) {
       return;
     }
+    console.log(this.formaDomicilio.value);
     this.domicilioService.guardarDomicilio(this.idPersona, this.tipo, this.formaDomicilio.value)
       .then( (result) => console.log('Domicilio guardado', result))
       .catch( (error) => console.log(error));

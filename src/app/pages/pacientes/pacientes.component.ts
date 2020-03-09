@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pacientes',
@@ -24,7 +25,8 @@ export class PacientesComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
-    private pacienteService: PacienteService
+    private pacienteService: PacienteService,
+    private router: Router
   ) {  }
 
   ngOnInit(): void {
@@ -54,7 +56,10 @@ export class PacientesComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   eliminar(element) {
-    console.log(element);
+    // console.log(element);
+    this.pacienteService.delete(element._id)
+    .then( (data) => console.log('Eliminado', data))
+    .catch( (error) => console.log(error));
   }
 
   matSortChange() {
@@ -69,6 +74,10 @@ export class PacientesComponent implements OnInit, AfterViewInit, OnDestroy {
     this.suscriptor.forEach(element => {
       element.unsubscribe();
     });
+  }
+
+  nuevoPaciente(): void {
+    this.router.navigate(['/pacientes', 'nuevo']);
   }
 
 }

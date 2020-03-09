@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { PacienteService, UsuarioService } from 'src/app/services/services.index';
+import { PacienteService, UsuarioService, AuthenticationService } from 'src/app/services/services.index';
 import { Subscription, Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PacienteInterface } from 'src/app/interfaces/paciente.interface';
 import { UserInterface } from 'src/app/interfaces/user.interface';
 import { map } from 'rxjs/internal/operators/map';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-paciente',
@@ -27,6 +28,7 @@ export class PacienteComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private route: Router,
     private usuarioService: UsuarioService,
+    private authService: AuthenticationService
   ) {
     this.loading = false;
   }
@@ -37,10 +39,44 @@ export class PacienteComponent implements OnInit, OnDestroy {
         this.modo = query.action;
       })
     );
-    this.paramId = this.activatedRoute.snapshot.params.id;
-    if (this.paramId !== 'nuevo') {
-      this.cargarPaciente(this.paramId);
-    }
+    this.suscriptor.push(
+      this.activatedRoute.params.subscribe(
+        (param) => {
+          console.log(param);
+          this.paramId = param.id;
+          if (this.paramId !== 'nuevo') {
+            this.cargarPaciente(this.paramId);
+          } else {
+            this.crearPaciente();
+          }
+        }
+      )
+    );
+  }
+
+  crearPaciente() {
+    this.nombrePaciente = 'Paciente nuevo';
+    this.paciente = {
+      apellido: '',
+      nombre: '',
+      tipoDoc: 'DNI',
+      nroDoc: '',
+      nacionalidad: null,
+      sexo: '',
+      fechaNac: '',
+      estado: null,
+      fechaAlta: moment().format('YYYY-MM-DD'),
+      fechaBaja: '',
+      borrado: false,
+      domicilio: {},
+      contactos: null,
+      ssocial: null,
+      familiares: null,
+      img: '',
+      observaciones: '',
+      actualizadoEl: moment().format('YYYY-MM-DD'),
+      actualizadoPor: ''
+    };
   }
 
   cargarPaciente(id) {
