@@ -1,0 +1,94 @@
+<nav>
+    <div class="sidebar-sticky">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link pointer" [routerLink]="['/dashboard']" routerLinkActive="active">
+            <fa-icon [icon]="faDescktop" class="menu-icon"></fa-icon>
+            Escritorio <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/pacientes']" routerLinkActive="router-link-active"  routerLinkActive="active">
+            <fa-icon [icon]="faUserInjured" class="menu-icon"></fa-icon>
+            Pacientes
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLinkActive="active">
+            <fa-icon [icon]="faUserTie" class="menu-icon"></fa-icon>
+            Profesionales
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/turnos']" routerLinkActive="router-link-active"  routerLinkActive="active">
+            <fa-icon [icon]="faCalendarAlt" class="menu-icon"></fa-icon>
+            Turnos
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLinkActive="active">
+            <fa-icon [icon]="faFileContract" class="menu-icon"></fa-icon>
+            Formularios
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLinkActive="active">
+            <fa-icon [icon]="faFileMedical" class="menu-icon"></fa-icon>
+            Informes
+          </a>
+        </li>
+      </ul>
+
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+        <span>Informes guardados</span>
+        <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+        </a>
+      </h6>
+      <ul class="nav flex-column mb-2">
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLinkActive="active">
+            <fa-icon [icon]="faCalendar" class="menu-icon"></fa-icon>
+            Turnos mensuales
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLinkActive="active">
+            <fa-icon [icon]="faCalendarWeek" class="menu-icon"></fa-icon>
+            Turnos semanales
+          </a>
+        </li>
+      </ul>
+
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+        <span>Mantenimiento</span>
+        <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+        </a>
+      </h6>
+      <ul class="nav flex-column mb-2">
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLinkActive="active">
+            <fa-icon [icon]="faUsers" class="menu-icon"></fa-icon>
+            Usuarios
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLinkActive="active">
+            <fa-icon [icon]="faBriefcase" class="menu-icon"></fa-icon>
+            Areas
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLinkActive="active">
+            <fa-icon [icon]="faPhoneSquare" class="menu-icon"></fa-icon>
+            Tipos de Contactos
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link pointer" [routerLink]="['/logout']" routerLinkActive="router-link-active"  routerLinkActive="active">
+            <fa-icon [icon]="faSignOutAlt" class="menu-icon"></fa-icon>
+            Salir
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>

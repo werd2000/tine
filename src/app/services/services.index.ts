@@ -1,0 +1,11 @@
+export { DomicilioService } from './domicilio/domicilio.service';
+export { ProvinciasArgentinasService } from './provinciasArgentinas/provincias-argentinas.service';
+export { PaisService } from './pais/pais.service';
+export { SexoService } from './sexo/sexo.service';
+export { TipoDocService } from './tipoDoc/tipo-doc.service';
+export { TurnoService } from './turno/turno.service';
+export { AreaService } from './area/area.service';
+export { PersonalService } from './personal/personal.service';
+export { AuthenticationService } from './authentication/authentication.service';
+export { UsuarioService } from './usuario/usuario.service';
+export { PacienteService } from './paciente/paciente.service';

@@ -1,0 +1,50 @@
+<div class="container p-3">
+    <form [formGroup]="formaDomicilio" (ngSubmit)="guardar()" class="form-container">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="calle">Calle</label>
+                <input type="text" class="form-control" formControlName="calle" id="inputCalle" placeholder="Calle donde vive">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="casa">Casa N.°</label>
+                <input type="text" class="form-control" formControlName="casa" id="inputCasa" placeholder="Número de casa">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="barrio">Barrio</label>
+                <input type="text" class="form-control" formControlName="barrio" id="inputBarrio" placeholder="Barrio donde vive">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-9">
+                <label for="ciudad">Ciudad</label>
+                <input type="text" class="form-control" formControlName="ciudad" id="inputCiudad" placeholder="Ciudad donde vive">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cp">C.P.</label>
+                <input type="text" class="form-control" formControlName="cp" id="inputCp" placeholder="Código Postal">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="provincia">Provincia</label>
+                <input type="text" class="form-control" formControlName="provincia" id="inputProvincia" placeholder="Provincia donde vive">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="pais">Pais</label>
+                <select class="form-control" formControlName="pais" id="inputPais">
+                    <option *ngFor="let pais of listaPaises" [value]="pais.id">{{pais.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <button class="btn btn-primary btn-block" type="submit">Guardar</button>
+            </div>
+            <div class="col-md-6">
+                <!-- <button class="btn btn-secondary btn-block" type="button" (click)="cancelar()">Cancelar</button> -->
+            </div>
+        </div>
+    </form>
+</div>

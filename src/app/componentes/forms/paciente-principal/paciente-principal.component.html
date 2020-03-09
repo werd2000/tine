@@ -1,0 +1,67 @@
+<div class="container p-3">
+    <form [formGroup]="forma" (ngSubmit)="guardar()" class="form-container">
+        <div class="form-group">
+            <label for="estado">Estado</label>
+            <select class="form-control" formControlName="estado" id="inputEstado">
+                <option *ngFor="let estado of listaEstadosPacientes" [value]="estado">{{estado}}</option>
+            </select>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="tipoDoc">Tipo Doc.</label>
+                <select class="form-control" formControlName="tipoDoc" id="inputTipoDoc">
+                    <option *ngFor="let tipoDoc of listaTipoDoc" [value]="tipoDoc">{{tipoDoc}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-8">
+                <label for="nroDoc">Nro. Doc.</label>
+                <input type="text" class="form-control" formControlName="nroDoc" id="inputNroDoc" placeholder="Nro. Doc.">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="apellido">Apellido</label>
+                <input type="text" class="form-control" formControlName="apellido" id="inputApellido" placeholder="Apellido">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" 
+                    [class.is-invalid] = "nombreValido"
+                    formControlName="nombre" id="inputNombre" placeholder="Nombre">
+                <div *ngIf="nombreValido" class="invalid-feedback">
+                    {{ error.campovacio }}
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="sexo">Sexo</label>
+                <select class="form-control" formControlName="sexo" id="inputSexo">
+                    <option *ngFor="let sexo of listaSexos" [value]="sexo">{{sexo}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="nacionalidad">Nacionalidad</label>
+                <select class="form-control" formControlName="nacionalidad" id="inputNacionalidad">
+                    <option *ngFor="let nacionalidad of listaNacionalidad" [value]="nacionalidad.id">{{nacionalidad.name}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="fechaNac">Fecha Nac.</label>
+                <input type="date" class="form-control" formControlName="fechaNac" id="inputFechaNac">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="observaciones">Observaciones</label>
+            <textarea class="form-control" formControlName="observaciones" id="inputObservaciones" placeholder="Observaciones"></textarea>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <button class="btn btn-primary btn-block" type="submit">Guardar</button>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-secondary btn-block" type="button" (click)="cancelar()">Cancelar</button>
+            </div>
+        </div>
+    </form>
+</div>

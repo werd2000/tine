@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-1">
+        <div class="card" *ngIf="!loading">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">
+                    Pacientes
+                </h4>
+            </div>
+            <div class="card-body">
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
+                <mat-table [dataSource]="dataSource" matSort>
+                    
+                    <ng-container matColumnDef="apellido">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>
+                             APELLIDO 
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.apellido}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="nombre">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>
+                            NOMBRE
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="nroDoc">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>
+                            NRO. DOC.
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.nroDoc}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="fechaNac">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>
+                            FECHA NAC.
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.fechaNac}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="estado">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>
+                            ESTADO
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.estado}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="acciones">
+                        <mat-header-cell *matHeaderCellDef>
+                            <!-- ACCIONES -->
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                            <a class="btn btn-outline-secondary btn-sm" [routerLink]="[ '/pacientes/', element._id ]" [queryParams]="{action: 'view'}" role="button">
+                                Ver
+                            </a>
+                            <a class="btn btn-outline-primary btn-sm" [routerLink]="[ '/pacientes/', element._id ]" [queryParams]="{action: 'edit'}" role="button">
+                                Editar
+                            </a>
+                            <a class="btn btn-outline-success btn-sm" [routerLink]="[ '/turnos/paciente/', element._id ]" role="button">
+                                Turnos
+                            </a>
+                            <button class="btn btn-outline-danger btn-sm" (click)="eliminar(element)">
+                                Eliminar
+                            </button>
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="dataToShow"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: dataToShow;"></mat-row>
+
+                </mat-table>
+
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                
+            </div>
+            <div class="card-footer">
+            </div>
+        </div>
+    </div>
+</div>

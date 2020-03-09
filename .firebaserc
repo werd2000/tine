@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "cronosapp-12a92": {
+      "hosting": {
+        "tine": [
+          "cronosapp-12a92"
+        ]
+      }
+    }
+  }
+}

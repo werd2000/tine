@@ -1,0 +1,133 @@
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-1">
+        <div class="card" *ngIf="!loading">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">
+                    Nuevo Turno
+                </h4>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="forma" (ngSubmit)="guardarTurno()" class="form-container" novalidate>
+
+                    <div class="form-row">
+                        <mat-form-field class="col-md-12">
+                          <input type="text" matInput formControlName="idPaciente" [matAutocomplete]="auto" placeholder="Paciente">
+                          <mat-error *ngIf="forma.controls['idPaciente'].invalid">{{ error.campovacio }}</mat-error>
+                        </mat-form-field>
+                        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="mostrarNombrePaciente">
+                          <mat-option *ngFor="let paciente of pacientesConFiltro | async" [value]="paciente">
+                              {{ paciente.apellido }} {{ paciente.nombre }}
+                          </mat-option>
+                        </mat-autocomplete>
+                    </div>
+      
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="fechaInicio">Fecha Inicio</label>
+                            <input type="date" class="form-control" 
+                            [class.is-invalid] = "fechaInicioValida"
+                            formControlName="fechaInicio" 
+                            id="inputFechaInicio">
+                            <div *ngIf="fechaInicioValida" class="invalid-feedback">
+                                {{ error.fechaValida }}
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="horaInicio">Hora Inicio</label>
+                            <input type="time" class="form-control"
+                            [class.is-invalid] = "horaInicioValida"
+                            (blur)="actualizarHoraFin()"
+                            [min]="horario.inicio" [max]="horario.fin"
+                            [step]="horario.paso"
+                            formControlName="horaInicio" id="inputHoraInicio">
+                            <div *ngIf="horaInicioValida" class="invalid-feedback">
+                                {{ error.horaValida }}
+                            </div>
+                        </div>
+                    </div>
+      
+                    <div class="form-row">
+                        <div class="form-group col-md-6" *ngIf="!data.nuevo">
+                            <label for="fechaFin">Fecha Fin</label>
+                            <input type="date" class="form-control" 
+                                [class.is-invalid] = "fechaFinValida"
+                                formControlName="fechaFin" 
+                                id="inputFechaFin">
+                            <div *ngIf="fechaFinValida" class="invalid-feedback">
+                                {{ error.fechaValida }}
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="horaFin">Hora Fin</label>
+                            <input type="time" 
+                                [class.is-invalid] = "horaFinValida"
+                                class="form-control" 
+                                formControlName="horaFin" id="inputHoraFin">
+                            <div *ngIf="horaFinValida" class="invalid-feedback">
+                                {{ error.horaValida }}
+                            </div>
+                        </div>
+                    </div>
+      
+                    <div class="form-row">
+                        <div class="form-group col-md-6" *ngIf="!data.nuevo">
+                            <label for="area">Area</label>
+                            <select class="form-control" formControlName="area" id="inputArea">
+                                <option *ngFor="let area of areas" [value]="area.area">{{area.area}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="profesional">Profesional</label>
+                            <select class="form-control" formControlName="idProfesional" id="inputIdProfesional">
+                                <option *ngFor="let profesional of profesionales" [value]="profesional._id">
+                                    {{profesional.apellido }} {{ profesional.nombre }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+      
+                    <div class="form-row" *ngIf="!data.nuevo">
+                        <div class="form-group col-md-12">
+                            <label for="area">Estado</label>
+                            <select class="form-control" formControlName="estado" id="inputEstado">
+                                <option *ngFor="let estado of estados" [value]="estado">{{estado}}</option>
+                            </select>
+                        </div>
+                    </div>
+      
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <textarea formControlName="observaciones" placeholder="Observaciones" rows="3" class="col-md-12"></textarea>
+                        </div>
+                    </div>
+      
+                    <div class="input-group" *ngIf="mostrarRepetirTurno">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="checkbox" formControlName="repetir">
+                            </div>
+                        </div>
+                        <label for="repetir" class="form-control">Repetir turno todos los {{ diaSemana }}</label>
+                    </div>
+                    <br>
+      
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button class="btn btn-primary btn-block" type="submit">
+                                Guardar
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <a class="btn btn-outline-secondary btn-block" (click)="cerrarModal()">
+                                Cancelar
+                            </a>
+                        </div>
+                    </div>      
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

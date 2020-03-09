@@ -1,0 +1,57 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { PagesRoutingModule } from './pages-routing.module';
+
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
+// Mis m'odulos
+import { SharedModule } from '../shared/shared.module';
+import { MaterialModule } from '../material.module';
+
+// Componentes
+import { DashboardComponent } from './dashboard/components/dashboard.component';
+import { PacienteComponent } from './paciente/paciente.component';
+import { PacientesComponent } from './pacientes/pacientes.component';
+import { PacientePrincipalComponent } from '../componentes/forms/paciente-principal/paciente-principal.component';
+import { TurnosComponent } from './turnos/turnos.component';
+import { AddTurnoComponent } from './turnos/add-turno.component';
+import { DomicilioComponent } from '../componentes/forms/domicilio/domicilio.component';
+
+// Pipes
+import { PipesModule } from '../pipes/pipes.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+@NgModule({
+  declarations: [
+    DashboardComponent,
+    PacienteComponent,
+    PacientesComponent,
+    PacientePrincipalComponent,
+    TurnosComponent,
+    AddTurnoComponent,
+    DomicilioComponent
+  ],
+  exports: [
+    DashboardComponent,
+    PacienteComponent,
+    PacientesComponent,
+    PacientePrincipalComponent,
+    TurnosComponent,
+    AddTurnoComponent,
+    DomicilioComponent
+  ],
+  imports: [
+    CommonModule,
+    PagesRoutingModule,
+    SharedModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    PipesModule,
+    FontAwesomeModule,
+    SweetAlert2Module
+  ]
+})
+export class PagesModule { }

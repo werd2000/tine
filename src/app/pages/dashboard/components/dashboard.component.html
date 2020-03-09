@@ -1,0 +1,95 @@
+<div class="container">
+
+    <div class="row row-cols-1 row-cols-md-3">
+
+        <div class="col mb-4">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">
+                        Pacientes
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{ cantPacTrat }} Pacientes en tratamiento.</li>
+                        <li class="list-group-item">{{ cantPacEval }} Pacientes en evaluación</li>
+                        <li class="list-group-item">
+                            <a [routerLink]="['/pacientes']">
+                                {{ (pacientes | async)?.length }} Pacientes en total.
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">
+                        Nuevo paciente
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col mb-4">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">
+                        Profesionales
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{ (personal | async)?.length }} Personas en total.</li>
+                        <li class="list-group-item">{{ (areas | async)?.length }} Areas en total.</li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">
+                        Nuevo profesional
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col mb-4">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">
+                        Turnos
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{ (turnos | async)?.length }} Turnos en total.</li>
+                        <!-- <li class="list-group-item">{{ cantAreas }} Areas en total.</li> -->
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">
+                        Nuevo Turno
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col mb-4">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">
+                        Formularios
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Anamnesis de lenguaje.</li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">
+                        Nuevo Formulario
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+</div>
