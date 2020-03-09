@@ -6,8 +6,21 @@
 }
 
 /*
+ * Topbar
+*/
+.badge-perfil:hover {
+  background-color: #555555;
+}
+
+.img-perfil {
+  width: 30px;
+  border-radius: 50%;
+}
+
+
+/*
  * Sidebar
- */
+*/
 
  .sidebar {
     position: fixed;

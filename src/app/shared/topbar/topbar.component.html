@@ -1,7 +1,16 @@
 <!-- Image and text -->
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand" href="#">
-      <img src="../../../assets/images/tine.png" width="30" height="30" class="d-inline-block align-top" alt="TINE">
-      {{ title }}
+    <a class="navbar-brand media" href="#">
+      <img src="../../../assets/images/tine.png" width="30" height="30" class="align-self-center" alt="TINE">
+      <div class="media-body">
+        <h4>{{ title }}</h4>
+      </div>
     </a>
-  </nav>
+    <div class="badge badge-pill badge-dark badge-perfil mr-2" *ngIf="user">
+      <span class="text-white-50">Hola, </span>
+      <span class="">{{ user.nombre }}</span>
+      <img alt="Pic" [src]="user.img | imagen" class="img-perfil">
+      <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
+      <!-- <span class="kt-badge kt-badge--username kt-badge--lg kt-badge--brand kt-hidden kt-badge--bold">S</span> -->
+    </div>
+</nav>

@@ -21,6 +21,7 @@ import { DomicilioComponent } from '../componentes/forms/domicilio/domicilio.com
 
 // Pipes
 import { PipesModule } from '../pipes/pipes.module';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({

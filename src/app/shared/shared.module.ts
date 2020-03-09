@@ -5,6 +5,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
+import { PipesModule } from '../pipes/pipes.module';
 
 // import { AppRoutingModule } from './app-routing.module';
 
@@ -12,7 +13,8 @@ import { RouterModule } from '@angular/router';
     imports: [
         CommonModule,
         FontAwesomeModule,
-        RouterModule
+        RouterModule,
+        PipesModule
     ],
     declarations: [
         TopbarComponent,
