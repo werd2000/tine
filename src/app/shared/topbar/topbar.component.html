@@ -8,7 +8,7 @@
     </a>
     <div class="badge badge-pill badge-dark badge-perfil mr-2" *ngIf="user">
       <span class="text-white-50">Hola, </span>
-      <span class="">{{ user.nombre }}</span>
+      <span class="mr-1">{{ user.nombre }}</span>
       <img alt="Pic" [src]="user.img | imagen" class="img-perfil">
       <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
       <!-- <span class="kt-badge kt-badge--username kt-badge--lg kt-badge--brand kt-hidden kt-badge--bold">S</span> -->
