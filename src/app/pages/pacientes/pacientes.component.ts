@@ -6,7 +6,12 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-
+import {
+  faEye,
+  faEdit,
+  faCalendarWeek,
+  faTrash
+} from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-pacientes',
   templateUrl: './pacientes.component.html',
@@ -20,6 +25,10 @@ export class PacientesComponent implements OnInit, AfterViewInit, OnDestroy {
   loading = true;
   sortedData: PacienteInterface[];
   suscriptor: Subscription[] = [];
+  faEye = faEye;
+  faEdit = faEdit;
+  faCalendarWeek = faCalendarWeek;
+  faTrash = faTrash;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;

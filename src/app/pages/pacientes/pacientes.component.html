@@ -75,16 +75,16 @@
                         </mat-header-cell>
                         <mat-cell *matCellDef="let element">
                             <a class="btn btn-outline-secondary btn-sm" [routerLink]="[ '/pacientes/', element._id ]" [queryParams]="{action: 'view'}" role="button">
-                                Ver
+                                <fa-icon [icon]="faEye" class="menu-icon"></fa-icon>
                             </a>
                             <a class="btn btn-outline-primary btn-sm" [routerLink]="[ '/pacientes/', element._id ]" [queryParams]="{action: 'edit'}" role="button">
-                                Editar
+                                <fa-icon [icon]="faEdit" class="menu-icon"></fa-icon>
                             </a>
                             <a class="btn btn-outline-success btn-sm" [routerLink]="[ '/turnos/paciente/', element._id ]" role="button">
-                                Turnos
+                                <fa-icon [icon]="faCalendarWeek" class="menu-icon"></fa-icon>
                             </a>
                             <button class="btn btn-outline-danger btn-sm" (click)="eliminar(element)">
-                                Eliminar
+                                <fa-icon [icon]="faTrash" class="menu-icon"></fa-icon>
                             </button>
                         </mat-cell>
                     </ng-container>
