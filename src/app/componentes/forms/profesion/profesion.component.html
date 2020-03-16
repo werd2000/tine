@@ -1,0 +1,55 @@
+<div class="container p-3" *ngIf="!loading">
+    <form [formGroup]="formaProfesion" (ngSubmit)="guardar()" class="form-container">
+        
+        <div formArrayName="profesiones">
+            
+            <div class="row" 
+                *ngFor="let prof of profesiones.controls; 
+                let i = index" [formGroupName]=i>
+
+                <div class="form-group col-md-8">
+                    <label for="tipoDoc">Area</label>
+                    <select class="form-control" formControlName="area" id="inputArea">
+                        <option *ngFor="let area of listaAreas" [value]="area.area">{{area.area}}</option>
+                    </select>
+                </div>
+
+                <div class="form-row col-md-12">
+                    <div class="form-group col-md-6">
+                        <label for="titulo">Titulo</label>
+                        <input type="text" class="form-control"
+                            formControlName="titulo" id="inputTitulo" placeholder="Titulo">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="institucion">Institucion</label>
+                        <input type="text" class="form-control" 
+                            formControlName="institucion" id="inputInstitucion" placeholder="Institucion">
+                    </div>
+                </div>
+                <div class="form-row col-md-12">
+                    <div class="form-group col-md-6">
+                        <label for="fecha">Fecha</label>
+                        <input type="text" class="form-control"
+                            formControlName="fecha" id="inputFecha" placeholder="Fecha">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="matProf">Mat. Prof.</label>
+                        <input type="text" class="form-control" 
+                            formControlName="matProf" id="inputMatProf" placeholder="matProf">
+                    </div>
+                </div>
+            </div>
+            <a class="badge badge-info m-3 p-2 pointer" (click)="agregarProfesion()" *ngIf="modo=='edit'">
+                Agregar nueva profesión +
+            </a>
+        </div>
+        <div class="row" *ngIf="modo=='edit'">
+            <div class="col-md-6">
+                <button class="btn btn-primary btn-block" type="submit">Guardar</button>
+            </div>
+            <div class="col-md-6">
+                <!-- <button class="btn btn-secondary btn-block" type="button" (click)="cancelar()">Cancelar</button> -->
+            </div>
+        </div>
+    </form>
+</div>

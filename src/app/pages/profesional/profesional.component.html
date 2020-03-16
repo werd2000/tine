@@ -3,11 +3,11 @@
         <div class="card" *ngIf="!loading">
             <div class="card-header">
                 <h3 class="my-0 font-weight-normal">
-                    Paciente: {{ nombrePaciente }}
+                    Profesional: {{ nombreProfesional }}
                 </h3>
             </div>
             <div class="card-body">
-                <ul class="nav nav-tabs" id="pacienteTab" role="tablist">
+                <ul class="nav nav-tabs" id="profesionalTab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="principal-tab" data-toggle="tab" href="#principal" role="tab" aria-controls="principal" aria-selected="true">
                             Datos Principales
@@ -16,6 +16,11 @@
                     <li class="nav-item">
                         <a class="nav-link" id="domicilio-tab" data-toggle="tab" href="#domicilio" role="tab" aria-controls="domicilio" aria-selected="false">
                             Domicilio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profesion-tab" data-toggle="tab" href="#profesion" role="tab" aria-controls="Profesin" aria-selected="false">
+                            Profesión
                         </a>
                     </li>
                     <li class="nav-item">
@@ -34,19 +39,25 @@
                         </a>
                     </li>
                   </ul>
-                  <div class="tab-content" id="pacienteTabContent">
+                  <div class="tab-content" id="profesionalTabContent">
                     <div class="tab-pane fade show active" id="principal" role="tabpanel" aria-labelledby="principal-tab">
-                        <app-paciente-principal *ngIf="paciente" [paciente]="paciente" [action]="modo"></app-paciente-principal>
+                        <app-profesional-principal *ngIf="profesional" [profesional]="profesional" [action]="modo"></app-profesional-principal>
                     </div>
                     <div class="tab-pane fade" id="domicilio" role="tabpanel" aria-labelledby="domicilio-tab">
-                        <app-domicilio *ngIf="paciente" 
-                            [idPersona]="paciente._id" 
-                            [domicilio]="paciente.domicilio" 
-                            [tipo]="'paciente'" [modo]="modo">
+                        <app-domicilio *ngIf="profesional" 
+                            [idPersona]="profesional._id" 
+                            [domicilio]="profesional.domicilio" 
+                            [tipo]="'profesional'" [modo]="modo">
                         </app-domicilio>
                     </div>
+                    <div class="tab-pane fade" id="profesion" role="tabpanel" aria-labelledby="profesion-tab">
+                        <app-profesion *ngIf="profesional" 
+                        [idPersona]="profesional._id" 
+                        [profesion]="profesional.profesion" 
+                        [tipo]="'profesional'" [modo]="modo"></app-profesion>
+                    </div>
                     <div class="tab-pane fade" id="contactos" role="tabpanel" aria-labelledby="contactos-tab">
-                        Contactos
+                        {{profesional | json}}
                     </div>
                     <div class="tab-pane fade" id="familia" role="tabpanel" aria-labelledby="familia-tab">
                         Familia

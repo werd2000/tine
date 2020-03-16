@@ -1,11 +1,5 @@
 <div class="container p-3">
     <form [formGroup]="forma" (ngSubmit)="guardar()" class="form-container">
-        <div class="form-group">
-            <label for="estado">Estado</label>
-            <select class="form-control" formControlName="estado" id="inputEstado">
-                <option *ngFor="let estado of listaEstadosPacientes" [value]="estado">{{estado}}</option>
-            </select>
-        </div>
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="tipoDoc">Tipo Doc.</label>
@@ -65,7 +59,7 @@
             <label for="observaciones">Observaciones</label>
             <textarea class="form-control" formControlName="observaciones" id="inputObservaciones" placeholder="Observaciones"></textarea>
         </div>
-        <div class="row" *ngIf="action == 'edit'">
+        <div class="row" *ngIf="action !== 'view'">
             <div class="col-md-6">
                 <button class="btn btn-primary btn-block" type="submit">Guardar</button>
             </div>

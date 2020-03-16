@@ -16,8 +16,8 @@ export class DomicilioService {
     if (tipo === 'paciente') {
       return this.pacienteService.updateDomicilio(data, idPersona);
     }
-    if (tipo === 'empleado') {
-      // this.personalService.updatePersonal(persona);
+    if (tipo === 'profesional') {
+      return this.personalService.updateDomicilio(data, idPersona);
     }
   }
 }

@@ -18,6 +18,10 @@ import { PacientePrincipalComponent } from '../componentes/forms/paciente-princi
 import { TurnosComponent } from './turnos/turnos.component';
 import { AddTurnoComponent } from './turnos/add-turno.component';
 import { DomicilioComponent } from '../componentes/forms/domicilio/domicilio.component';
+import { ProfesionalesComponent } from './profesionales/profesionales.component';
+import { ProfesionalComponent } from './profesional/profesional.component';
+import { ProfesionalPrincipalComponent } from '../componentes/forms/profesional-principal/profesional-principal.component';
+import { ProfesionComponent } from '../componentes/forms/profesion/profesion.component';
 
 // Pipes
 import { PipesModule } from '../pipes/pipes.module';
@@ -32,7 +36,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     PacientePrincipalComponent,
     TurnosComponent,
     AddTurnoComponent,
-    DomicilioComponent
+    DomicilioComponent,
+    ProfesionalesComponent,
+    ProfesionalComponent,
+    ProfesionalPrincipalComponent,
+    ProfesionComponent
   ],
   exports: [
     DashboardComponent,
@@ -41,7 +49,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     PacientePrincipalComponent,
     TurnosComponent,
     AddTurnoComponent,
-    DomicilioComponent
+    DomicilioComponent,
+    ProfesionalesComponent,
+    ProfesionalComponent,
+    ProfesionalPrincipalComponent,
+    ProfesionComponent
   ],
   imports: [
     CommonModule,

@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-// import { DashboardComponent } from './dashboard/components/dashboard.component';
-
 
 
 const pagesRoutes: Routes = [
     {
       path: 'dashboard',
       loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
-      // component: DashboardComponent,
       data: { title: 'Dashboard' }
     },
     {
@@ -20,6 +17,14 @@ const pagesRoutes: Routes = [
       loadChildren: () => import('./paciente/paciente.module').then(m => m.PacienteModule)
     },
     {
+      path: 'profesionales',
+      loadChildren: () => import('./profesionales/profesionales.module').then(m => m.ProfesionalesModule)
+    },
+    {
+      path: 'profesionales/:id',
+      loadChildren: () => import('./profesional/profesional.module').then(m => m.ProfesionalModule)
+    },
+    {
       path: 'turnos',
       loadChildren: () => import('./turnos/turnos.module').then(m => m.TurnosModule)
     },
@@ -29,7 +34,7 @@ const pagesRoutes: Routes = [
     },
     {
       path: '',
-      redirectTo: '/dashboard',
+      redirectTo: 'dashboard',
       pathMatch: 'full'
     }
 ];

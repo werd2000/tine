@@ -1,3 +1,4 @@
+export { ProfesionService } from './profesion/profesion.service';
 export { DomicilioService } from './domicilio/domicilio.service';
 export { ProvinciasArgentinasService } from './provinciasArgentinas/provincias-argentinas.service';
 export { PaisService } from './pais/pais.service';

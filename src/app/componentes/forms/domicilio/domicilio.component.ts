@@ -25,7 +25,7 @@ export class DomicilioComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.modo === 'ver') {
+    if (this.modo === 'view') {
       this.ver = true;
     }
     this.listaPaises = this.paisService.getPaises();
@@ -70,15 +70,10 @@ export class DomicilioComponent implements OnInit {
       return;
     }
     console.log(this.formaDomicilio.value);
+    console.log(this.tipo);
     this.domicilioService.guardarDomicilio(this.idPersona, this.tipo, this.formaDomicilio.value)
       .then( (result) => console.log('Domicilio guardado', result))
       .catch( (error) => console.log(error));
-    // if (this.tipo.toLowerCase() === 'paciente') {
-    //   this.pacienteService.updateDomicilio(this.formaDomicilio.value, this.idPersona)
-    //     .then( (result) => console.log('Domicilio guardado', result))
-    //     .catch( (error) => console.log(error)
-    //     );
-    // }
   }
 
 }
