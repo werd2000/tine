@@ -65,7 +65,7 @@
             <label for="observaciones">Observaciones</label>
             <textarea class="form-control" formControlName="observaciones" id="inputObservaciones" placeholder="Observaciones"></textarea>
         </div>
-        <div class="row" *ngIf="action == 'edit'">
+        <div class="row" *ngIf="action !== 'view'">
             <div class="col-md-6">
                 <button class="btn btn-primary btn-block" type="submit">Guardar</button>
             </div>

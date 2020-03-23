@@ -69,8 +69,6 @@ export class ProfesionComponent implements OnInit {
       // console.log(profesion);
       this.agregarProfesion(profesion);
     }
-    // for (let i = 0; i < this.listaProfesiones.length; i++) {
-    // }
   }
 
   agregarProfesion(profesion: ProfesionInterface = null) {

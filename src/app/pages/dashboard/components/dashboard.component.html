@@ -21,9 +21,9 @@
                     </ul>
                 </div>
                 <div class="card-footer">
-                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">
+                    <a href="#" [routerLink]="['/pacientes', 'nuevo']" routerLinkActive="router-link-active"  class="btn btn-lg btn-block btn-outline-primary" role="button">
                         Nuevo paciente
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -42,9 +42,9 @@
                     </ul>
                 </div>
                 <div class="card-footer">
-                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">
+                    <a href="#" role="button" [routerLink]="['/profesionales', 'nuevo']" routerLinkActive="router-link-active"  class="btn btn-lg btn-block btn-outline-primary">
                         Nuevo profesional
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -63,9 +63,9 @@
                     </ul>
                 </div>
                 <div class="card-footer">
-                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">
-                        Nuevo Turno
-                    </button>
+                    <a href="#" [routerLink]="['/turnos']" role="button" routerLinkActive="router-link-active"  class="btn btn-lg btn-block btn-outline-primary">
+                        Ver Turnos
+                    </a>
                 </div>
             </div>
         </div>

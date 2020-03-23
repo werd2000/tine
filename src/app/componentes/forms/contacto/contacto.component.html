@@ -1,0 +1,53 @@
+<div class="container p-3" *ngIf="!loading">
+    <form [formGroup]="formaContacto" (ngSubmit)="guardar()" class="form-container">
+
+        <div formArrayName="contactos">
+
+            <div class="row" 
+                *ngFor="let contact of contactos.controls; 
+                let i = index" [formGroupName]=i>
+
+                <div class="form-group col-md-3">
+                    <label for="tipoDoc">Tipo</label>
+                    <select class="form-control" formControlName="tipo" id="inputTipo">
+                        <option *ngFor="let tipo of listaTipoContactos" [value]="tipo.tipo">{{tipo.tipo}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="valor">Valor</label>
+                    <input type="text" class="form-control"
+                        formControlName="valor" id="inputValor" placeholder="Valor">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="observaciones">Observaciones</label>
+                    <input type="text" class="form-control" 
+                        formControlName="observaciones" id="inputObservaciones">
+                </div>
+
+                <div class="form-group col-md-1">
+                    <!-- <label for="acciones"> </label> -->
+                    <!-- <a class="badge badge-pill badge-danger mt-4 p-2" (click)="eliminar(i)" role="button" -->
+                    <button type="button" class="btn btn-outline-danger btn-sm mt-4" (click)="eliminar(i)" role="button"
+                        *ngIf="cantContactos > 1 && modo!='ver'">
+                        <!-- <fa-icon [icon]="faTrash" size="2x" class="menu-icon"></fa-icon> -->
+                        <fa-icon [icon]="faTrash" class="menu-icon"></fa-icon>
+                    </button>
+                </div>
+            </div>
+            <a role="button" class="badge badge-pill badge-info m-3 p-2 pointer font-weight-normal" (click)="agregarContacto()" *ngIf="modo=='edit'">
+                Agregar nuevo contacto +
+            </a>
+        </div>
+        <div class="row" *ngIf="modo=='edit'">
+            <div class="col-md-6">
+                <button class="btn btn-primary btn-block" type="submit">Guardar</button>
+            </div>
+            <div class="col-md-6">
+                <!-- <button class="btn btn-secondary btn-block" type="button" (click)="cancelar()">Cancelar</button> -->
+            </div>
+        </div>
+
+    </form>
+</div>

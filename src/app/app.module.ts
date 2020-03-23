@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID  } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData, LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 // importar locales
 import localeEsAR from '@angular/common/locales/es-AR';
@@ -64,7 +64,8 @@ registerLocaleData(localeEsAR, 'es-Ar');
   ],
   providers: [
     AngularFireStorage,
-    { provide: LOCALE_ID, useValue: 'es-Ar' }
+    { provide: LOCALE_ID, useValue: 'es-Ar' },
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

@@ -119,4 +119,14 @@ export class PersonalService {
 
   }
 
+  // ======================================================
+  // Actualiza los contactos con id con los datos enviados
+  // los campos no incluidos permanecen sin cambios
+  // ======================================================
+  updateContactos(datos: object[], id: string) {
+    this.personalDoc = this.afs.doc<PersonalInterface>(`profesionales/${id}`);
+    return this.personalDoc.update({contactos: datos});
+
+  }
+
 }

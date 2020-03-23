@@ -11,6 +11,8 @@ import { SexoService } from './sexo/sexo.service';
 import { PaisService } from './pais/pais.service';
 import { DomicilioService } from './domicilio/domicilio.service';
 import { ProfesionService } from './profesion/profesion.service';
+import { TipoContactoService } from './tipoContacto/tipo-contacto.service';
+import { ContactoService } from './contacto/contacto.service';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { ProfesionService } from './profesion/profesion.service';
         SexoService,
         PaisService,
         DomicilioService,
-        ProfesionService
+        ProfesionService,
+        TipoContactoService,
+        ContactoService
     ],
 })
 export class ServicesModule { }

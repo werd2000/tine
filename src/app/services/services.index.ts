@@ -1,3 +1,5 @@
+export { ContactoService } from './contacto/contacto.service';
+export { TipoContactoService } from './tipoContacto/tipo-contacto.service';
 export { ProfesionService } from './profesion/profesion.service';
 export { DomicilioService } from './domicilio/domicilio.service';
 export { ProvinciasArgentinasService } from './provinciasArgentinas/provincias-argentinas.service';
