@@ -1,3 +1,4 @@
+export { FamiliaService } from './familia/famlia.service';
 export { ContactoService } from './contacto/contacto.service';
 export { TipoContactoService } from './tipoContacto/tipo-contacto.service';
 export { ProfesionService } from './profesion/profesion.service';

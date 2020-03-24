@@ -23,6 +23,7 @@ import { ProfesionalComponent } from './profesional/profesional.component';
 import { ProfesionalPrincipalComponent } from '../componentes/forms/profesional-principal/profesional-principal.component';
 import { ProfesionComponent } from '../componentes/forms/profesion/profesion.component';
 import { ContactoComponent } from '../componentes/forms/contacto/contacto.component';
+import { FamiliaComponent } from '../componentes/forms/familia/familia.component';
 
 // Pipes
 import { PipesModule } from '../pipes/pipes.module';
@@ -42,7 +43,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ProfesionalComponent,
     ProfesionalPrincipalComponent,
     ProfesionComponent,
-    ContactoComponent
+    ContactoComponent,
+    FamiliaComponent
   ],
   exports: [
     DashboardComponent,
@@ -56,7 +58,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ProfesionalComponent,
     ProfesionalPrincipalComponent,
     ProfesionComponent,
-    ContactoComponent
+    ContactoComponent,
+    FamiliaComponent
   ],
   imports: [
     CommonModule,

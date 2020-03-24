@@ -81,6 +81,15 @@ export class PacienteService {
   }
 
   // ======================================================
+  // Actualiza los datos de familia con id con los datos enviados
+  // los campos no incluidos permanecen sin cambios
+  // ======================================================
+  updateFamilia(datos: object[], id: string) {
+    this.pacienteDoc = this.afs.doc<PacienteInterface>(`pacientes/${id}`);
+    return this.pacienteDoc.update({familiares: datos});
+  }
+
+  // ======================================================
   // Agrega datos sin eliminar los existentes
   // ======================================================
   // Usar el siguiente codigo

@@ -42,7 +42,7 @@ export class PacienteComponent implements OnInit, OnDestroy {
     this.suscriptor.push(
       this.activatedRoute.params.subscribe(
         (param) => {
-          console.log(param);
+          // console.log(param);
           this.paramId = param.id;
           if (this.paramId !== 'nuevo') {
             this.cargarPaciente(this.paramId);

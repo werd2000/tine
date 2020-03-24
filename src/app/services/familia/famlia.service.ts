@@ -6,19 +6,19 @@ import { PersonalService } from '../personal/personal.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ContactoService {
+export class FamiliaService {
 
   constructor(
     public pacienteService: PacienteService,
     public personalService: PersonalService,
   ) { }
 
-  guardarContacto(idPersona: string, tipo: string, data: any) {
+  guardarFamilia(idPersona: string, tipo: string, data: any) {
     if (tipo === 'paciente') {
-      return this.pacienteService.updateContactos(data, idPersona);
+      return this.pacienteService.updateFamilia(data, idPersona);
     }
     if (tipo === 'profesional') {
-      return this.personalService.updateContactos(data, idPersona);
+      return this.personalService.updateFamilia(data, idPersona);
     }
   }
 }

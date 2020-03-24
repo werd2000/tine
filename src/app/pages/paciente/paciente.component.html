@@ -53,7 +53,11 @@
                         </app-contacto>
                     </div>
                     <div class="tab-pane fade" id="familia" role="tabpanel" aria-labelledby="familia-tab">
-                        Familia
+                        <app-familia *ngIf="paciente" 
+                            [idPersona]="paciente._id" 
+                            [familiaPersona]="paciente.familiares" 
+                            [tipo]="'paciente'" [modo]="modo">
+                        </app-familia>
                     </div>
                     <div class="tab-pane fade" id="ssocial" role="tabpanel" aria-labelledby="ssocial-tab">
                         SSocial
