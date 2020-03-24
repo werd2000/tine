@@ -20,13 +20,24 @@ export class DomicilioComponent implements OnInit {
 
   constructor(
     private paisService: PaisService,
-    private pacienteService: PacienteService,
+    // private pacienteService: PacienteService,
     private domicilioService: DomicilioService
   ) { }
 
   ngOnInit(): void {
     if (this.modo === 'view') {
       this.ver = true;
+    }
+    if (this.domicilio === undefined) {
+      this.domicilio = {
+        calle: '',
+        casa: '',
+        barrio: '',
+        ciudad: '',
+        cp: '',
+        provincia: '',
+        pais: ''
+      };
     }
     this.listaPaises = this.paisService.getPaises();
     this.crearFormulario();

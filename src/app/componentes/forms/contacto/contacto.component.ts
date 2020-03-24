@@ -110,6 +110,7 @@ export class ContactoComponent implements OnInit, OnDestroy {
     console.log(i);
     const control = this.formaContacto.controls.contactos as FormArray;
     control.removeAt(i);
+    this.guardar();
   }
 
 }

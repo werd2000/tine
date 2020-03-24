@@ -15,7 +15,7 @@ export class ContactoService {
 
   guardarContacto(idPersona: string, tipo: string, data: any) {
     if (tipo === 'paciente') {
-    //   return this.pacienteService.updatePaciente(persona);
+      return this.pacienteService.updateContactos(data, idPersona);
     }
     if (tipo === 'profesional') {
       return this.personalService.updateContactos(data, idPersona);

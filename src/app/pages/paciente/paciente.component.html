@@ -46,7 +46,11 @@
                         </app-domicilio>
                     </div>
                     <div class="tab-pane fade" id="contactos" role="tabpanel" aria-labelledby="contactos-tab">
-                        Contactos
+                        <app-contacto *ngIf="paciente" 
+                            [idPersona]="paciente._id" 
+                            [contactosPersona]="paciente.contactos" 
+                            [tipo]="'paciente'" [modo]="modo">
+                        </app-contacto>
                     </div>
                     <div class="tab-pane fade" id="familia" role="tabpanel" aria-labelledby="familia-tab">
                         Familia

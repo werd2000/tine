@@ -72,6 +72,15 @@ export class PacienteService {
   }
 
   // ======================================================
+  // Actualiza los contactos con id con los datos enviados
+  // los campos no incluidos permanecen sin cambios
+  // ======================================================
+  updateContactos(datos: object[], id: string) {
+    this.pacienteDoc = this.afs.doc<PacienteInterface>(`pacientes/${id}`);
+    return this.pacienteDoc.update({contactos: datos});
+  }
+
+  // ======================================================
   // Agrega datos sin eliminar los existentes
   // ======================================================
   // Usar el siguiente codigo
