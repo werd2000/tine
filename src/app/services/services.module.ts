@@ -14,6 +14,8 @@ import { ProfesionService } from './profesion/profesion.service';
 import { TipoContactoService } from './tipoContacto/tipo-contacto.service';
 import { ContactoService } from './contacto/contacto.service';
 import { FamiliaService } from './familia/famlia.service';
+import { FormularioService } from './formulario/formulario.service';
+import { LoadFileService } from './loadFile/load-file.service';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { FamiliaService } from './familia/famlia.service';
         ProfesionService,
         TipoContactoService,
         ContactoService,
-        FamiliaService
+        FamiliaService,
+        FormularioService,
+        LoadFileService
     ],
 })
 export class ServicesModule { }

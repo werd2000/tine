@@ -79,7 +79,11 @@
                 </div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Anamnesis de lenguaje.</li>
+                        <li class="list-group-item" *ngFor="let formulario of formularios | async | slice:1:4; let i = index">
+                            <a [href]="formulario.url" target="_blank">
+                                {{i + 1}} - {{ formulario.nombre }}
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="card-footer">

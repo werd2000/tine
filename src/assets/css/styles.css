@@ -90,6 +90,16 @@
   }
 }
 
+/* =================== MAT-TABLE ===================== */
+
+.mat-row:nth-child(even){
+  background-color:#f8f9fa;
+}
+.mat-row:hover {
+  background-color:#e9ecef;
+}
+
+
 /* =================== TURNOS ===================== */
 #turnos {
   width: 100%;

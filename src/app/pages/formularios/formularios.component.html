@@ -1,0 +1,66 @@
+<div class="container mt-3">
+    <div class="row row-cols-1 row-cols-md-1">
+        <div class="card" *ngIf="!loading">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">
+                    Formularios
+                </h4>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-end">
+                    <div class="btn-toolbar ml-4" role="toolbar" aria-label="Toolbar with button groups">
+                        <div class="btn-group mr-2" role="group" aria-label="First group">
+                            <button class="btn btn-outline-success" type="button" (click)="nuevoFormulario()">
+                                Nuevo
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="card-body">
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
+                <mat-table [dataSource]="dataSource" matSort>
+                    
+                    <ng-container matColumnDef="nombre">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>
+                             Nombre 
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="descripcion">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>
+                            Descripción
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.descripcion}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="acciones">
+                        <mat-header-cell *matHeaderCellDef>
+                            <!-- ACCIONES -->
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                            <a class="btn btn-outline-primary btn-sm" [href]=element.url target="_blank" role="button">
+                                <fa-icon [icon]="faEye" class="menu-icon"></fa-icon>
+                            </a>
+                            <!-- <a class="btn btn-outline-primary btn-sm" [routerLink]="[ '/formularios/', element._id ]" [queryParams]="{action: 'edit'}" role="button">
+                                <fa-icon [icon]="faEdit" class="menu-icon"></fa-icon>
+                            </a>
+                            <a class="btn btn-outline-success btn-sm" [routerLink]="[ '/turnos/formulario/', element._id ]" role="button">
+                                <fa-icon [icon]="faCalendarWeek" class="menu-icon"></fa-icon>
+                            </a> -->
+                            <button class="btn btn-outline-danger btn-sm" (click)="eliminar(element)">
+                                <fa-icon [icon]="faTrash" class="menu-icon"></fa-icon>
+                            </button>
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="dataToShow"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: dataToShow;"></mat-row>
+
+                </mat-table>
+
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                
+            </div>
+        </div>
+    </div>
+</div>

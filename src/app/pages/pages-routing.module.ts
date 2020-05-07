@@ -33,6 +33,14 @@ const pagesRoutes: Routes = [
       loadChildren: () => import('./turnos/turnos.module').then(m => m.TurnosModule)
     },
     {
+      path: 'formularios',
+      loadChildren: () => import('./formularios/formularios.module').then(m => m.FormulariosModule)
+    },
+    {
+      path: 'formularios/:id',
+      loadChildren: () => import('./formulario/formulario.module').then(m => m.FormularioModule)
+    },
+    {
       path: '',
       redirectTo: 'dashboard',
       pathMatch: 'full'

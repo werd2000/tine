@@ -1,3 +1,5 @@
+export { LoadFileService } from './loadFile/load-file.service';
+export { FormularioService } from './formulario/formulario.service';
 export { FamiliaService } from './familia/famlia.service';
 export { ContactoService } from './contacto/contacto.service';
 export { TipoContactoService } from './tipoContacto/tipo-contacto.service';

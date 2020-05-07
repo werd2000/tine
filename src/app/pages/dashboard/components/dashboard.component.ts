@@ -1,5 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { PacienteService, PersonalService, AreaService, TurnoService, AuthenticationService } from 'src/app/services/services.index';
+import {
+  PacienteService,
+  PersonalService,
+  AreaService,
+  TurnoService,
+  AuthenticationService,
+  FormularioService
+} from 'src/app/services/services.index';
 import * as moment from 'moment';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { Observable } from 'rxjs';
@@ -8,6 +15,7 @@ import { PersonalInterface } from 'src/app/interfaces/personal.interface';
 import { AreaInterface } from 'src/app/interfaces/area.interface';
 import { TurnoInterface } from 'src/app/interfaces/turno.interface';
 import { Router } from '@angular/router';
+import { FormularioInterface } from 'src/app/interfaces/formulario.interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,6 +31,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   turnos: Observable<TurnoInterface[]>;
   pacientes: Observable<PacienteInterface[]>;
   personal: Observable<PersonalInterface[]>;
+  formularios: Observable<FormularioInterface[]>;
   suscriptor: Subscription[] = [];
 
   constructor(
@@ -30,6 +39,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private personalService: PersonalService,
     private areaService: AreaService,
     private turnoService: TurnoService,
+    private formulariosService: FormularioService,
     private authService: AuthenticationService,
     private router: Router
   ) { }
@@ -54,6 +64,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.personal = this.personalService.getPersonal();
     this.areas = this.areaService.getAreas();
     this.turnos = this.turnoService.searchTurnos('fechaInicio', this.fecha.format('YYYY-MM-DD'));
+    this.formularios = this.formulariosService.getFormularios();
   }
 
   ngOnDestroy() {
